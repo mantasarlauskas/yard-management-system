@@ -1,0 +1,12 @@
+﻿2019-05-11 auscep1
+Repozitorija:
+https://github.com/mantasarlauskas/yard-management-system
+
+
+2019-05-11 auscep1
+Pavyzdys darbui su klasemis:
+https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro?view=aspnetcore-2.2
+
+2019-05-12 auscep1
+C:\PSAPI
+
