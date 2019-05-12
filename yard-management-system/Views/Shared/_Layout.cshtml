@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - yard_management_system</title>
+    <title>@ViewData["Title"] - Kiemo valdymo sistema</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -21,18 +21,18 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">yard_management_system</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Pagrindinis</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Pagrindinis</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Order">Užsakymai</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Setting">Nustatymai</a></li>
                 </ul>
             </div>
         </div>
@@ -44,7 +44,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2019 - yard_management_system</p>
+            <p>&copy; 2019 - Kiemo valdymo sistema</p>
         </footer>
     </div>
 

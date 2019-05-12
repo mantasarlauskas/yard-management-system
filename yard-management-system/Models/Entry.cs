@@ -13,6 +13,9 @@ namespace yard_management_system.Models
 		public DateTime BlockedFrom { get; set; }
 		public DateTime BlockedTo { get; set; }
 
+		// Foreign key
+
+		// Primary key
 		public ICollection<Cargo> Cargos { get; set; }
 	}
 }

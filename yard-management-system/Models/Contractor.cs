@@ -7,8 +7,6 @@ namespace yard_management_system.Models
 {
 	public class Contractor
 	{
-		public int Id { get; set; }
-		public ContractorType TypeOfContractor { get; set; }
 		public enum ContractorType
 		{
 			Vairuotojas,
@@ -17,8 +15,21 @@ namespace yard_management_system.Models
 			Vadybininkas,
 			Klientas
 		}
-		public ICollection<User> User { get; set; }
-		public ICollection<Message> Messages { get; set; }
-		public ICollection<Cargo> Cargos { get; set; }
+
+		public int Id { get; set; }
+		public ContractorType TypeOfContractor { get; set; }
+
+		public int UserID { get; set; }
+		public int OrderContractID { get; set; }
+		public int MessageReceiverID { get; set; }
+
+		// Foreign key
+		public User User { get; set; }
+		public MessageReceiver MessageReceiver { get; set; }
+
+		// Primary key
+		//public ICollection<User> User { get; set; }
+		//public ICollection<Message> Messages { get; set; }
+		//public ICollection<Cargo> Cargos { get; set; }
 	}
 }

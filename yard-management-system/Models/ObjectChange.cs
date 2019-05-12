@@ -10,7 +10,16 @@ namespace yard_management_system.Models
 		public int EntryId { get; set; }
 		public DateTime CreationDate { get; set; }
 		public DateTime ModifyDate { get; set; }
-		public ICollection<User> UserEditor { get; set; }
-		public ICollection<User> UserCreator { get; set; }
+
+		public int UserEditorID { get; set; }
+		public int UserCreatorID { get; set; }
+
+		// Foreign key
+		public User UserEditor { get; set; }
+		public User UserCreator { get; set; }
+
+		// Primary key
+		//public ICollection<User> UserEditor { get; set; }
+		//public ICollection<User> UserCreator { get; set; }
 	}
 }

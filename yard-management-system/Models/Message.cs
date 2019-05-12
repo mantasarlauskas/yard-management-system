@@ -10,8 +10,17 @@ namespace yard_management_system.Models
 		public int Id { get; set; }
 		public string Text { get; set; }
 
-		public ICollection<Contractor> Contractors { get; set; }
-		public ICollection<Cargo> Cargo { get; set; }
+		public int CargoID { get; set; }
+		public int MessageReceiverID { get; set; }
+
+
+		// Foreign key
+		public Cargo Cargo { get; set; }
+		public MessageReceiver MessageReceiver { get; set; }
+
+		// Primary key
+		//public ICollection<Contractor> Contractors { get; set; }
+		//public ICollection<Cargo> Cargo { get; set; }
 
 	}
 }

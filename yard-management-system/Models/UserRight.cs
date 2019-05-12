@@ -5,22 +5,14 @@ using System.Threading.Tasks;
 
 namespace yard_management_system.Models
 {
-	public class Order : ObjectChange
+	public class UserRight
 	{
 		public int Id { get; set; }
-		public OrderState State { get; set; }
-
-		public enum OrderState
-		{
-			ruošiamas,
-			patvirtintas,
-			įvykdytas,
-			atmestas
-		}
 
 		// Foreign key
 
 		// Primary key
-		public ICollection<Cargo> Cargos { get; set; }
+		public ICollection<User> Users { get; set; }
+		public ICollection<PermissionsSet> PermissionsSets { get; set; }
 	}
 }

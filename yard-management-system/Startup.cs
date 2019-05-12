@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using yard_management_system.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace yard_management_system
@@ -32,9 +31,6 @@ namespace yard_management_system
 				options.CheckConsentNeeded = context => true;
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
-
-			services.AddDbContext<YardManagementSystem>(options =>
-		options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 		}
