@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using yard_management_system.Models;
 
 namespace yard_management_system
 {
@@ -33,6 +34,9 @@ namespace yard_management_system
 			});
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+		    services.AddDbContext<yard_management_systemContext>(options =>
+		            options.UseSqlServer(Configuration.GetConnectionString("yard_management_systemContext")));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

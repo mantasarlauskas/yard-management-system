@@ -7,7 +7,7 @@ namespace yard_management_system.Models
 {
 	public class Order : ObjectChange
 	{
-		public int Id { get; set; }
+		public int OrderID { get; set; }
 		public OrderState State { get; set; }
 
 		public enum OrderState

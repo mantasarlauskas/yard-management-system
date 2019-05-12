@@ -14,7 +14,7 @@ namespace yard_management_system.Models
 			specialus
 		}
 
-		public int Id { get; set; }
+		public int ID { get; set; }
 		public DateTime Date { get; set; }
 		public string TimeFrom { get; set; }
 		public string TimeDuration { get; set; }

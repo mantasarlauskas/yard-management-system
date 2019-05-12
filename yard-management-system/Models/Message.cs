@@ -7,7 +7,7 @@ namespace yard_management_system.Models
 {
 	public class Message
 	{
-		public int Id { get; set; }
+		public int ID { get; set; }
 		public string Text { get; set; }
 
 		public int CargoID { get; set; }
