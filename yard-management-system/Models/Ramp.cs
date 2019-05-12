@@ -15,7 +15,7 @@ namespace yard_management_system.Models
 			DE
 		}
 
-		public int Id { get; set; }
+		public int RampID { get; set; }
 		public string Code { get; set; }
 		public Category CategoryOfRamp { get; set; }
 		public bool Blocked { get; set; }

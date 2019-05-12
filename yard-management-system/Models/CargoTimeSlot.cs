@@ -7,7 +7,7 @@ namespace yard_management_system.Models
 {
 	public class CargoTimeSlot
 	{
-		public int Id { get; set; }
+		public int ID { get; set; }
 
 		// Foreign key
 

@@ -10,3 +10,8 @@ https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro?view=aspnetcore-2
 2019-05-12 auscep1
 C:\PSAPI
 
+2019-05-12 auscep
+Duomenu bazes komandos:
+	update-database
+	Remove-Migration
+	add-migration initial

@@ -16,7 +16,7 @@ namespace yard_management_system.Models
 			Klientas
 		}
 
-		public int Id { get; set; }
+		public int ID { get; set; }
 		public ContractorType TypeOfContractor { get; set; }
 
 		public int UserID { get; set; }

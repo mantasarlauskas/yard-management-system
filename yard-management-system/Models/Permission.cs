@@ -18,7 +18,7 @@ namespace yard_management_system.Models
 			Teisiu_rinkinys
 		}
 
-		public int Id { get; set; }
+		public int ID { get; set; }
 		public bool Read { get; set; }
 		public bool Create { get; set; }
 		public bool Modify { get; set; }

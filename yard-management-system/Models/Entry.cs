@@ -7,7 +7,7 @@ namespace yard_management_system.Models
 {
 	public class Entry :ObjectChange
 	{
-		public int Id { get; set; }
+		public int EntryID { get; set; }
 		public string Code { get; set; }
 		public bool Blocked { get; set; }
 		public DateTime BlockedFrom { get; set; }

@@ -7,7 +7,7 @@ namespace yard_management_system.Models
 {
 	public class User
 	{
-		public int Id { get; set; }
+		public int UserID { get; set; }
 		public string UserName { get; set; }
 		public string Password { get; set; }
 		public string EMail { get; set; }
@@ -23,8 +23,26 @@ namespace yard_management_system.Models
 
 		// Primary key
 		public ICollection<Contractor> Contractor { get; set; }
+		public ICollection<ObjectChange> UserIsCreator { get; set; }
 		//public ICollection<PermissionsSet> PermissionsSets { get; set; }
-		public ICollection<ObjectChange> UserCreator { get; set; }
-		public ICollection<ObjectChange> UserEditor { get; set; }
 	}
+
+/*	public class UserCreator : User
+	{
+		public int UserIsCreatorID { get; set; }
+
+		// Primary key
+		public ICollection<ObjectChange> UserIsCreator { get; set; }
+	}
+	public class UserEditor : User
+	{
+		public int UserIsEditorID { get; set; }
+	
+		// Primary key
+		public ICollection<ObjectChange> UserIsEditor { get; set; }
+
+	}
+	*/
+
+
 }

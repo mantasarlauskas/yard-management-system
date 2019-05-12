@@ -7,7 +7,7 @@ namespace yard_management_system.Models
 {
 	public class PermissionsSet : ObjectChange
 	{
-		public int Id { get; set; }
+		public int PermissionsSetID { get; set; }
 		public string Code { get; set; }
 		public string Description { get; set; }
 

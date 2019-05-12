@@ -16,7 +16,7 @@ namespace yard_management_system.Models
 			iškrautas
 		}
 
-		public int Id { get; set; }
+		public int ID { get; set; }
 		public string RegistrationNumber { get; set; }
 		public string Weight { get; set; }
 		public string Description { get; set; }
