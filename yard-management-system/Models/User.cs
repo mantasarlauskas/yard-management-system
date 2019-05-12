@@ -16,9 +16,15 @@ namespace yard_management_system.Models
 		public string SecondName { get; set; }
 		public bool Blocked { get; set; }
 
+		public int UserRightID { get; set; }
+
+		// Foreign key
+		public UserRight UserRight { get; set; }
+
+		// Primary key
 		public ICollection<Contractor> Contractor { get; set; }
-		public ICollection<PermissionsSet> PermissionsSets { get; set; }
-		public ICollection<ObjectChange> ObjectChangesCreator { get; set; }
-		public ICollection<ObjectChange> ObjectChangesEditor { get; set; }
+		//public ICollection<PermissionsSet> PermissionsSets { get; set; }
+		public ICollection<ObjectChange> UserCreator { get; set; }
+		public ICollection<ObjectChange> UserEditor { get; set; }
 	}
 }

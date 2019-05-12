@@ -15,22 +15,17 @@ namespace yard_management_system.Controllers
 			return View();
 		}
 
-		public IActionResult About()
+		public IActionResult Order()
 		{
-			ViewData["Message"] = "Your application description page.";
+			ViewData["Message"] = "Užsakymų sąrašas";
 
 			return View();
 		}
 
-		public IActionResult Contact()
+		public IActionResult Setting()
 		{
-			ViewData["Message"] = "Your contact page.";
+			ViewData["Message"] = "Nustatymų sąrašas";
 
-			return View();
-		}
-
-		public IActionResult Privacy()
-		{
 			return View();
 		}
 

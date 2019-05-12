@@ -5,22 +5,15 @@ using System.Threading.Tasks;
 
 namespace yard_management_system.Models
 {
-	public class Order : ObjectChange
+	public class CargoTimeSlot
 	{
 		public int Id { get; set; }
-		public OrderState State { get; set; }
-
-		public enum OrderState
-		{
-			ruošiamas,
-			patvirtintas,
-			įvykdytas,
-			atmestas
-		}
 
 		// Foreign key
 
 		// Primary key
+		public ICollection<TimeSlot> TimeSlots { get; set; }
 		public ICollection<Cargo> Cargos { get; set; }
+
 	}
 }
