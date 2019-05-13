@@ -25,5 +25,7 @@ namespace yard_management_system.Models
         public DbSet<Cargo> Cargo { get; set; }
 
         public DbSet<CargoTimeSlot> CargoTimeSlot { get; set; }
+
+        public DbSet<Ramp> Ramp { get; set; }
     }
 }

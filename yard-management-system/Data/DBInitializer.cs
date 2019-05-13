@@ -12,6 +12,12 @@ namespace yard_management_system.Data
         {
             context.Database.EnsureCreated();
 
+            InitializeUsers(context);
+            InitializeRamps(context);
+        }
+
+        public static void InitializeUsers(yard_management_systemContext context)
+        {
             if (context.User.Any())
             {
                 return;   // DB has been seeded
@@ -35,13 +41,54 @@ namespace yard_management_system.Data
                     UserRight = new UserRight()
                 };
             }
-           
+
             foreach (User u in users)
             {
                 context.User.Add(u);
             }
- 
+
             context.SaveChanges();
+        }
+
+        public static void InitializeRamps(yard_management_systemContext context)
+        {
+            if (context.Ramp.Any())
+            {
+                return;   // DB has been seeded
+            }
+
+            const int n = 20;
+            var ramps = new Ramp[n];
+            Random rnd = new Random();
+
+            for (int i = 0; i < n; i++)
+            {
+                ramps[i] = new Ramp
+                {
+                    Code = rnd.Next(00000, 99999).ToString(),
+                    CategoryOfRamp = Ramp.Category.C,
+                    Blocked = i % 2 == 0 ? false : true,
+                    BlockedFrom = RandomDay(rnd),
+                    BlockedTo = RandomDay(rnd),
+                    CreationDate = new DateTime(),
+                    UserCreatorId = 1
+                };
+            }
+
+            foreach (Ramp r in ramps)
+            {
+                context.Ramp.Add(r);
+            }
+
+            context.SaveChanges();
+        }
+
+        
+        public static DateTime RandomDay(Random gen)
+        {
+            DateTime start = new DateTime(1995, 1, 1);
+            int range = (DateTime.Today - start).Days;
+            return start.AddDays(gen.Next(range));
         }
     }
 }
