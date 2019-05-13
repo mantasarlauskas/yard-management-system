@@ -15,13 +15,6 @@ namespace yard_management_system.Controllers
 			return View();
 		}
 
-		public IActionResult Order()
-		{
-			ViewData["Message"] = "Užsakymų sąrašas";
-
-			return View();
-		}
-
 		public IActionResult Setting()
 		{
 			ViewData["Message"] = "Nustatymų sąrašas";

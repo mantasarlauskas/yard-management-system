@@ -14,10 +14,16 @@ namespace yard_management_system.Models
         {
         }
 
-        public DbSet<yard_management_system.Models.User> User { get; set; }
+        public DbSet<User> User { get; set; }
 
-        public DbSet<yard_management_system.Models.Message> Message { get; set; }
+        public DbSet<Message> Message { get; set; }
 
-        public DbSet<yard_management_system.Models.Permission> Permission { get; set; }
+        public DbSet<Permission> Permission { get; set; }
+
+        public DbSet<Order> Order { get; set; }
+
+        public DbSet<Cargo> Cargo { get; set; }
+
+        public DbSet<CargoTimeSlot> CargoTimeSlot { get; set; }
     }
 }
