@@ -20,8 +20,6 @@ namespace yard_management_system.Models
 		public ContractorType TypeOfContractor { get; set; }
 
 		public int UserID { get; set; }
-		public int OrderContractID { get; set; }
-		//public int MessageReceiverID { get; set; }
 
 		// Foreign key
 		public User User { get; set; }

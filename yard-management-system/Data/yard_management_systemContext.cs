@@ -31,5 +31,9 @@ namespace yard_management_system.Models
         public DbSet<Ramp> Ramp { get; set; }
 
         public DbSet<TimeSlot> TimeSlot { get; set; }
+
+        public DbSet<Entry> Entry { get; set; }
+
+        public DbSet<Contractor> Contractor { get; set; }
     }
 }

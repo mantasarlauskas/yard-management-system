@@ -10,8 +10,8 @@ using yard_management_system.Models;
 namespace yard_management_system.Migrations
 {
     [DbContext(typeof(yard_management_systemContext))]
-    [Migration("20190514081023_update")]
-    partial class update
+    [Migration("20190514125541_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -76,8 +76,6 @@ namespace yard_management_system.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("OrderContractID");
 
                     b.Property<int>("TypeOfContractor");
 
@@ -287,8 +285,6 @@ namespace yard_management_system.Migrations
                     b.Property<DateTime>("BlockedTo");
 
                     b.Property<string>("Code");
-
-                    b.Property<int>("EntryID");
 
                     b.ToTable("Entry");
 

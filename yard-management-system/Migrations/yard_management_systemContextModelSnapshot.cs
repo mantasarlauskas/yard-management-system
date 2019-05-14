@@ -75,8 +75,6 @@ namespace yard_management_system.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("OrderContractID");
-
                     b.Property<int>("TypeOfContractor");
 
                     b.Property<int>("UserID");
@@ -285,8 +283,6 @@ namespace yard_management_system.Migrations
                     b.Property<DateTime>("BlockedTo");
 
                     b.Property<string>("Code");
-
-                    b.Property<int>("EntryID");
 
                     b.ToTable("Entry");
 

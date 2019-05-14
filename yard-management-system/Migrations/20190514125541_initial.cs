@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace yard_management_system.Migrations
 {
-    public partial class update : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,7 +67,7 @@ namespace yard_management_system.Migrations
                         column: x => x.MessageID,
                         principalTable: "Message",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -132,8 +132,7 @@ namespace yard_management_system.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     TypeOfContractor = table.Column<int>(nullable: false),
-                    UserID = table.Column<int>(nullable: false),
-                    OrderContractID = table.Column<int>(nullable: false)
+                    UserID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -148,7 +147,6 @@ namespace yard_management_system.Migrations
                     CreationDate = table.Column<DateTime>(nullable: false),
                     UserCreatorID = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
-                    EntryID = table.Column<int>(nullable: true),
                     Code = table.Column<string>(nullable: true),
                     Blocked = table.Column<bool>(nullable: true),
                     BlockedFrom = table.Column<DateTime>(nullable: true),
@@ -197,7 +195,7 @@ namespace yard_management_system.Migrations
                         column: x => x.UserRightID,
                         principalTable: "UserRight",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -316,7 +314,7 @@ namespace yard_management_system.Migrations
                 column: "CargoID",
                 principalTable: "Cargo",
                 principalColumn: "ID",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_CargoTimeSlot_TimeSlot_TimeSlotID",
@@ -324,7 +322,7 @@ namespace yard_management_system.Migrations
                 column: "TimeSlotID",
                 principalTable: "TimeSlot",
                 principalColumn: "TimeSlotID",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Message_Cargo_CargoID",
@@ -332,7 +330,7 @@ namespace yard_management_system.Migrations
                 column: "CargoID",
                 principalTable: "Cargo",
                 principalColumn: "ID",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_OrderContract_Cargo_CargoID",
@@ -340,7 +338,7 @@ namespace yard_management_system.Migrations
                 column: "CargoID",
                 principalTable: "Cargo",
                 principalColumn: "ID",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_OrderContract_Contractor_ContractorID",
@@ -348,7 +346,7 @@ namespace yard_management_system.Migrations
                 column: "ContractorID",
                 principalTable: "Contractor",
                 principalColumn: "ID",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_MessageReceiver_Contractor_ContractorID",
@@ -356,7 +354,7 @@ namespace yard_management_system.Migrations
                 column: "ContractorID",
                 principalTable: "Contractor",
                 principalColumn: "ID",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Cargo_ObjectChanges_EntryID",
@@ -364,7 +362,7 @@ namespace yard_management_system.Migrations
                 column: "EntryID",
                 principalTable: "ObjectChanges",
                 principalColumn: "ID",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Cargo_ObjectChanges_OrderID",
@@ -396,7 +394,7 @@ namespace yard_management_system.Migrations
                 column: "PermissionsSetID",
                 principalTable: "PermissionsSet",
                 principalColumn: "PermissionsSetID",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Contractor_User_UserID",
@@ -404,7 +402,7 @@ namespace yard_management_system.Migrations
                 column: "UserID",
                 principalTable: "User",
                 principalColumn: "UserID",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_ObjectChanges_User_UserCreatorID",
@@ -420,7 +418,7 @@ namespace yard_management_system.Migrations
                 column: "UserID",
                 principalTable: "User",
                 principalColumn: "UserID",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

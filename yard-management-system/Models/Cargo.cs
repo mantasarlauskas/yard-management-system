@@ -33,12 +33,8 @@ namespace yard_management_system.Models
 		public Order Order { get; set; }
 
 		//Primary key
-		//public ICollection<Contractor> Contractors { get; set; }
 		public ICollection<Message> Messages { get; set; }
 		public ICollection<CargoTimeSlot> CargoTimeSlots { get; set; }
 		public ICollection<OrderContract> OrderContracts { get; set; }
-
-		//public ICollection<TimeSlot> TimeSlots { get; set; }
-
 	}
 }
