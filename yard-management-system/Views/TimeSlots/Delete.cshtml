@@ -1,0 +1,60 @@
+﻿@model yard_management_system.Models.TimeSlot
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TimeSlot</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeFrom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TimeFrom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeDuration)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TimeDuration)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeOfTimeSlot)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypeOfTimeSlot)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Reserved)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Reserved)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Blocked)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Blocked)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ramp)
+        </dt>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="TimeSlotID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

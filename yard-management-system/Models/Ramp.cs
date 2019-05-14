@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace yard_management_system.Models
 {
-	public class Ramp : ObjectChange
+    public class Ramp : ObjectChange
 	{
 		public enum Category
 		{
@@ -15,7 +14,6 @@ namespace yard_management_system.Models
 			DE
 		}
 
-		public int RampID { get; set; }
 		public string Code { get; set; }
 		public Category CategoryOfRamp { get; set; }
 		public bool Blocked { get; set; }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace yard_management_system.Models
 {
@@ -14,7 +13,8 @@ namespace yard_management_system.Models
 			specialus
 		}
 
-		public int ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int TimeSlotID { get; set; }
 		public DateTime Date { get; set; }
 		public string TimeFrom { get; set; }
 		public string TimeDuration { get; set; }

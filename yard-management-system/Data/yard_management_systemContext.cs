@@ -14,6 +14,8 @@ namespace yard_management_system.Models
         {
         }
 
+        public DbSet<ObjectChange> ObjectChanges { get; set; }
+
         public DbSet<User> User { get; set; }
 
         public DbSet<Message> Message { get; set; }

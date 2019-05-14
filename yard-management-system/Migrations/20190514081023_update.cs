@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace yard_management_system.Migrations
 {
-    public partial class initial : Migration
+    public partial class update : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -93,8 +93,7 @@ namespace yard_management_system.Migrations
                 name: "TimeSlot",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    TimeSlotID = table.Column<int>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
                     TimeFrom = table.Column<string>(nullable: true),
                     TimeDuration = table.Column<string>(nullable: true),
@@ -105,7 +104,7 @@ namespace yard_management_system.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TimeSlot", x => x.ID);
+                    table.PrimaryKey("PK_TimeSlot", x => x.TimeSlotID);
                 });
 
             migrationBuilder.CreateTable(
@@ -142,13 +141,12 @@ namespace yard_management_system.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ObjectChange",
+                name: "ObjectChanges",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ID = table.Column<int>(nullable: false),
                     CreationDate = table.Column<DateTime>(nullable: false),
-                    UserCreatorId = table.Column<int>(nullable: false),
+                    UserCreatorID = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
                     EntryID = table.Column<int>(nullable: true),
                     Code = table.Column<string>(nullable: true),
@@ -157,7 +155,6 @@ namespace yard_management_system.Migrations
                     BlockedTo = table.Column<DateTime>(nullable: true),
                     OrderID = table.Column<int>(nullable: true),
                     State = table.Column<int>(nullable: true),
-                    RampID = table.Column<int>(nullable: true),
                     Ramp_Code = table.Column<string>(nullable: true),
                     CategoryOfRamp = table.Column<int>(nullable: true),
                     Ramp_Blocked = table.Column<bool>(nullable: true),
@@ -166,7 +163,7 @@ namespace yard_management_system.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ObjectChange", x => x.ID);
+                    table.PrimaryKey("PK_ObjectChanges", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -207,8 +204,7 @@ namespace yard_management_system.Migrations
                 name: "User",
                 columns: table => new
                 {
-                    UserID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserID = table.Column<int>(nullable: false),
                     UserName = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
                     EMail = table.Column<string>(nullable: true),
@@ -275,9 +271,9 @@ namespace yard_management_system.Migrations
                 column: "MessageID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ObjectChange_UserCreatorId",
-                table: "ObjectChange",
-                column: "UserCreatorId");
+                name: "IX_ObjectChanges_UserCreatorID",
+                table: "ObjectChanges",
+                column: "UserCreatorID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderContract_CargoID",
@@ -327,7 +323,7 @@ namespace yard_management_system.Migrations
                 table: "CargoTimeSlot",
                 column: "TimeSlotID",
                 principalTable: "TimeSlot",
-                principalColumn: "ID",
+                principalColumn: "TimeSlotID",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
@@ -363,34 +359,34 @@ namespace yard_management_system.Migrations
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Cargo_ObjectChange_EntryID",
+                name: "FK_Cargo_ObjectChanges_EntryID",
                 table: "Cargo",
                 column: "EntryID",
-                principalTable: "ObjectChange",
+                principalTable: "ObjectChanges",
                 principalColumn: "ID",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Cargo_ObjectChange_OrderID",
+                name: "FK_Cargo_ObjectChanges_OrderID",
                 table: "Cargo",
                 column: "OrderID",
-                principalTable: "ObjectChange",
+                principalTable: "ObjectChanges",
                 principalColumn: "ID",
                 onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Cargo_ObjectChange_RampID",
+                name: "FK_Cargo_ObjectChanges_RampID",
                 table: "Cargo",
                 column: "RampID",
-                principalTable: "ObjectChange",
+                principalTable: "ObjectChanges",
                 principalColumn: "ID",
                 onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_TimeSlot_ObjectChange_RampID",
+                name: "FK_TimeSlot_ObjectChanges_RampID",
                 table: "TimeSlot",
                 column: "RampID",
-                principalTable: "ObjectChange",
+                principalTable: "ObjectChanges",
                 principalColumn: "ID",
                 onDelete: ReferentialAction.NoAction);
 
@@ -411,9 +407,9 @@ namespace yard_management_system.Migrations
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ObjectChange_User_UserCreatorId",
-                table: "ObjectChange",
-                column: "UserCreatorId",
+                name: "FK_ObjectChanges_User_UserCreatorID",
+                table: "ObjectChanges",
+                column: "UserCreatorID",
                 principalTable: "User",
                 principalColumn: "UserID",
                 onDelete: ReferentialAction.NoAction);
@@ -461,7 +457,7 @@ namespace yard_management_system.Migrations
                 name: "Cargo");
 
             migrationBuilder.DropTable(
-                name: "ObjectChange");
+                name: "ObjectChanges");
 
             migrationBuilder.DropTable(
                 name: "User");

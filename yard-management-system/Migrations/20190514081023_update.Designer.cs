@@ -10,14 +10,14 @@ using yard_management_system.Models;
 namespace yard_management_system.Migrations
 {
     [DbContext(typeof(yard_management_systemContext))]
-    [Migration("20190514072706_initial")]
-    partial class initial
+    [Migration("20190514081023_update")]
+    partial class update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.2-rtm-30932")
+                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -128,22 +128,20 @@ namespace yard_management_system.Migrations
 
             modelBuilder.Entity("yard_management_system.Models.ObjectChange", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("ID");
 
                     b.Property<DateTime>("CreationDate");
 
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
-                    b.Property<int>("UserCreatorId");
+                    b.Property<int>("UserCreatorID");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("UserCreatorId");
+                    b.HasIndex("UserCreatorID");
 
-                    b.ToTable("ObjectChange");
+                    b.ToTable("ObjectChanges");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("ObjectChange");
                 });
@@ -213,9 +211,7 @@ namespace yard_management_system.Migrations
 
             modelBuilder.Entity("yard_management_system.Models.TimeSlot", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("TimeSlotID");
 
                     b.Property<bool>("Blocked");
 
@@ -231,7 +227,7 @@ namespace yard_management_system.Migrations
 
                     b.Property<int>("TypeOfTimeSlot");
 
-                    b.HasKey("ID");
+                    b.HasKey("TimeSlotID");
 
                     b.HasIndex("RampID");
 
@@ -240,9 +236,7 @@ namespace yard_management_system.Migrations
 
             modelBuilder.Entity("yard_management_system.Models.User", b =>
                 {
-                    b.Property<int>("UserID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("UserID");
 
                     b.Property<bool>("Blocked");
 
@@ -332,8 +326,6 @@ namespace yard_management_system.Migrations
                     b.Property<string>("Code")
                         .HasColumnName("Ramp_Code");
 
-                    b.Property<int>("RampID");
-
                     b.ToTable("Ramp");
 
                     b.HasDiscriminator().HasValue("Ramp");
@@ -403,7 +395,7 @@ namespace yard_management_system.Migrations
                 {
                     b.HasOne("yard_management_system.Models.User", "UserCreator")
                         .WithMany("UserIsCreator")
-                        .HasForeignKey("UserCreatorId")
+                        .HasForeignKey("UserCreatorID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

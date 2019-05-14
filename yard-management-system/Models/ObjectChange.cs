@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace yard_management_system.Models
 {
 	public abstract class ObjectChange
 	{
-		public int ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID { get; set; }
 		public DateTime CreationDate { get; set; }
 		//public DateTime ModifyDate { get; set; }
 
 		//public int UserEditorId { get; set; }
-		public int UserCreatorId { get; set; }
+		public int UserCreatorID { get; set; }
 
 		// Foreign key
 		//public UserEditor UserEditor { get; set; }
