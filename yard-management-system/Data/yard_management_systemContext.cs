@@ -19,5 +19,7 @@ namespace yard_management_system.Models
         public DbSet<yard_management_system.Models.Message> Message { get; set; }
 
         public DbSet<yard_management_system.Models.Permission> Permission { get; set; }
+
+        public DbSet<yard_management_system.Models.TimeSlot> TimeSlot { get; set; }
     }
 }

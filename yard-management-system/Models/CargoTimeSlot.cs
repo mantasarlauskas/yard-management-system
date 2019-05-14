@@ -9,11 +9,15 @@ namespace yard_management_system.Models
 	{
 		public int ID { get; set; }
 
+		public int CargoID { get; set; }
+		public int TimeSlotID { get; set; }
+
 		// Foreign key
+		public Cargo Cargo { get; set; }
+		public TimeSlot TimeSlot { get; set; }
 
 		// Primary key
-		public ICollection<TimeSlot> TimeSlots { get; set; }
-		public ICollection<Cargo> Cargos { get; set; }
+	//	public ICollection<TimeSlot> TimeSlots { get; set; }
 
 	}
 }
