@@ -9,10 +9,15 @@ namespace yard_management_system.Models
 	{
 		public int ID { get; set; }
 
+		public int CargoID { get; set; }
+		public int ContractorID { get; set; }
+
 		// Foreign key
+		public Cargo Cargo { get; set; }
+		public Contractor Contractor { get; set; }
 
 		// Primary key
-		public ICollection<Cargo> Cargos { get; set; }
-		public ICollection<Contractor> Contractors { get; set; }
+		//public ICollection<Cargo> Cargos { get; set; }
+		//public ICollection<Contractor> Contractors { get; set; }
 	}
 }

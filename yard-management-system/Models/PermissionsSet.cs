@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace yard_management_system.Models
 {
-	public class PermissionsSet : ObjectChange
+
+	public class PermissionsSet 
 	{
 		public int PermissionsSetID { get; set; }
 		public string Code { get; set; }

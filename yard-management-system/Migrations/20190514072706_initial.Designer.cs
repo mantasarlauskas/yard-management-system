@@ -10,7 +10,7 @@ using yard_management_system.Models;
 namespace yard_management_system.Migrations
 {
     [DbContext(typeof(yard_management_systemContext))]
-    [Migration("20190512174929_initial")]
+    [Migration("20190514072706_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,13 +27,9 @@ namespace yard_management_system.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CargoTimeSlotID");
-
                     b.Property<string>("Description");
 
                     b.Property<int>("EntryID");
-
-                    b.Property<int>("OrderContractID");
 
                     b.Property<int>("OrderID");
 
@@ -47,11 +43,7 @@ namespace yard_management_system.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("CargoTimeSlotID");
-
                     b.HasIndex("EntryID");
-
-                    b.HasIndex("OrderContractID");
 
                     b.HasIndex("OrderID");
 
@@ -66,7 +58,15 @@ namespace yard_management_system.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CargoID");
+
+                    b.Property<int>("TimeSlotID");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("CargoID");
+
+                    b.HasIndex("TimeSlotID");
 
                     b.ToTable("CargoTimeSlot");
                 });
@@ -77,8 +77,6 @@ namespace yard_management_system.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("MessageReceiverID");
-
                     b.Property<int>("OrderContractID");
 
                     b.Property<int>("TypeOfContractor");
@@ -86,10 +84,6 @@ namespace yard_management_system.Migrations
                     b.Property<int>("UserID");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("MessageReceiverID");
-
-                    b.HasIndex("OrderContractID");
 
                     b.HasIndex("UserID");
 
@@ -104,15 +98,11 @@ namespace yard_management_system.Migrations
 
                     b.Property<int>("CargoID");
 
-                    b.Property<int>("MessageReceiverID");
-
                     b.Property<string>("Text");
 
                     b.HasKey("ID");
 
                     b.HasIndex("CargoID");
-
-                    b.HasIndex("MessageReceiverID");
 
                     b.ToTable("Message");
                 });
@@ -123,7 +113,15 @@ namespace yard_management_system.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ContractorID");
+
+                    b.Property<int>("MessageID");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("ContractorID");
+
+                    b.HasIndex("MessageID");
 
                     b.ToTable("MessageReceiver");
                 });
@@ -156,7 +154,15 @@ namespace yard_management_system.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CargoID");
+
+                    b.Property<int>("ContractorID");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("CargoID");
+
+                    b.HasIndex("ContractorID");
 
                     b.ToTable("OrderContract");
                 });
@@ -186,6 +192,25 @@ namespace yard_management_system.Migrations
                     b.ToTable("Permission");
                 });
 
+            modelBuilder.Entity("yard_management_system.Models.PermissionsSet", b =>
+                {
+                    b.Property<int>("PermissionsSetID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("UserRightID");
+
+                    b.HasKey("PermissionsSetID");
+
+                    b.HasIndex("UserRightID");
+
+                    b.ToTable("PermissionsSet");
+                });
+
             modelBuilder.Entity("yard_management_system.Models.TimeSlot", b =>
                 {
                     b.Property<int>("ID")
@@ -193,8 +218,6 @@ namespace yard_management_system.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Blocked");
-
-                    b.Property<int>("CargoTimeSlotID");
 
                     b.Property<DateTime>("Date");
 
@@ -209,8 +232,6 @@ namespace yard_management_system.Migrations
                     b.Property<int>("TypeOfTimeSlot");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("CargoTimeSlotID");
 
                     b.HasIndex("RampID");
 
@@ -237,7 +258,7 @@ namespace yard_management_system.Migrations
 
                     b.Property<string>("UserName");
 
-                    b.Property<int>("UserRightID");
+                    b.Property<int?>("UserRightID");
 
                     b.HasKey("UserID");
 
@@ -252,7 +273,11 @@ namespace yard_management_system.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("UserID");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("UserRight");
                 });
@@ -289,26 +314,6 @@ namespace yard_management_system.Migrations
                     b.HasDiscriminator().HasValue("Order");
                 });
 
-            modelBuilder.Entity("yard_management_system.Models.PermissionsSet", b =>
-                {
-                    b.HasBaseType("yard_management_system.Models.ObjectChange");
-
-                    b.Property<string>("Code")
-                        .HasColumnName("PermissionsSet_Code");
-
-                    b.Property<string>("Description");
-
-                    b.Property<int>("PermissionsSetID");
-
-                    b.Property<int>("UserRightID");
-
-                    b.HasIndex("UserRightID");
-
-                    b.ToTable("PermissionsSet");
-
-                    b.HasDiscriminator().HasValue("PermissionsSet");
-                });
-
             modelBuilder.Entity("yard_management_system.Models.Ramp", b =>
                 {
                     b.HasBaseType("yard_management_system.Models.ObjectChange");
@@ -336,19 +341,9 @@ namespace yard_management_system.Migrations
 
             modelBuilder.Entity("yard_management_system.Models.Cargo", b =>
                 {
-                    b.HasOne("yard_management_system.Models.CargoTimeSlot", "CargoTimeSlot")
-                        .WithMany("Cargos")
-                        .HasForeignKey("CargoTimeSlotID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("yard_management_system.Models.Entry", "Entry")
                         .WithMany("Cargos")
                         .HasForeignKey("EntryID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("yard_management_system.Models.OrderContract", "OrderContract")
-                        .WithMany("Cargos")
-                        .HasForeignKey("OrderContractID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("yard_management_system.Models.Order", "Order")
@@ -362,18 +357,21 @@ namespace yard_management_system.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("yard_management_system.Models.CargoTimeSlot", b =>
+                {
+                    b.HasOne("yard_management_system.Models.Cargo", "Cargo")
+                        .WithMany("CargoTimeSlots")
+                        .HasForeignKey("CargoID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("yard_management_system.Models.TimeSlot", "TimeSlot")
+                        .WithMany("CargoTimeSlots")
+                        .HasForeignKey("TimeSlotID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("yard_management_system.Models.Contractor", b =>
                 {
-                    b.HasOne("yard_management_system.Models.MessageReceiver", "MessageReceiver")
-                        .WithMany("Contractors")
-                        .HasForeignKey("MessageReceiverID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("yard_management_system.Models.OrderContract")
-                        .WithMany("Contractors")
-                        .HasForeignKey("OrderContractID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("yard_management_system.Models.User", "User")
                         .WithMany("Contractor")
                         .HasForeignKey("UserID")
@@ -386,10 +384,18 @@ namespace yard_management_system.Migrations
                         .WithMany("Messages")
                         .HasForeignKey("CargoID")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
 
-                    b.HasOne("yard_management_system.Models.MessageReceiver", "MessageReceiver")
-                        .WithMany("Messages")
-                        .HasForeignKey("MessageReceiverID")
+            modelBuilder.Entity("yard_management_system.Models.MessageReceiver", b =>
+                {
+                    b.HasOne("yard_management_system.Models.Contractor", "Contractor")
+                        .WithMany("MessageReceivers")
+                        .HasForeignKey("ContractorID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("yard_management_system.Models.Message", "Message")
+                        .WithMany("MessageReceivers")
+                        .HasForeignKey("MessageID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -401,6 +407,19 @@ namespace yard_management_system.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("yard_management_system.Models.OrderContract", b =>
+                {
+                    b.HasOne("yard_management_system.Models.Cargo", "Cargo")
+                        .WithMany("OrderContracts")
+                        .HasForeignKey("CargoID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("yard_management_system.Models.Contractor", "Contractor")
+                        .WithMany("OrderContracts")
+                        .HasForeignKey("ContractorID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("yard_management_system.Models.Permission", b =>
                 {
                     b.HasOne("yard_management_system.Models.PermissionsSet", "PermissionsSet")
@@ -409,13 +428,16 @@ namespace yard_management_system.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("yard_management_system.Models.PermissionsSet", b =>
+                {
+                    b.HasOne("yard_management_system.Models.UserRight", "UserRight")
+                        .WithMany("PermissionsSets")
+                        .HasForeignKey("UserRightID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("yard_management_system.Models.TimeSlot", b =>
                 {
-                    b.HasOne("yard_management_system.Models.CargoTimeSlot", "CargoTimeSlot")
-                        .WithMany("TimeSlots")
-                        .HasForeignKey("CargoTimeSlotID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("yard_management_system.Models.Ramp", "Ramp")
                         .WithMany("TimeSlots")
                         .HasForeignKey("RampID")
@@ -424,17 +446,16 @@ namespace yard_management_system.Migrations
 
             modelBuilder.Entity("yard_management_system.Models.User", b =>
                 {
-                    b.HasOne("yard_management_system.Models.UserRight", "UserRight")
+                    b.HasOne("yard_management_system.Models.UserRight")
                         .WithMany("Users")
-                        .HasForeignKey("UserRightID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserRightID");
                 });
 
-            modelBuilder.Entity("yard_management_system.Models.PermissionsSet", b =>
+            modelBuilder.Entity("yard_management_system.Models.UserRight", b =>
                 {
-                    b.HasOne("yard_management_system.Models.UserRight", "UserRight")
-                        .WithMany("PermissionsSets")
-                        .HasForeignKey("UserRightID")
+                    b.HasOne("yard_management_system.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
