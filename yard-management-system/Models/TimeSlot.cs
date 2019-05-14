@@ -23,13 +23,13 @@ namespace yard_management_system.Models
 		public bool Blocked { get; set; }
 
 		public int RampID { get; set; }
-		public int CargoTimeSlotID { get; set; }
 
 		// Foreign key
 		public Ramp Ramp { get; set; }
-		public CargoTimeSlot CargoTimeSlot { get; set; }
 
 		// Primary key
+		public ICollection<CargoTimeSlot> CargoTimeSlots { get; set; }
+
 		//public ICollection<Ramp> Ramp { get; set; }
 		//public ICollection<Cargo> Cargos { get; set; }
 	}

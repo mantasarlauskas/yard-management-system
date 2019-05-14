@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace yard_management_system.Models
 {
-	public class ObjectChange
+	public abstract class ObjectChange
 	{
 		public int ID { get; set; }
 		public DateTime CreationDate { get; set; }
