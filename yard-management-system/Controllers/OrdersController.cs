@@ -51,20 +51,23 @@ namespace yard_management_system.Controllers
             return View();
         }
 
-        // POST: Orders/Create
+        // POST: Orders
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderID,State,ID,CreationDate,UserCreatorID")] Order order)
+        public async Task<IActionResult> Create([Bind("State,ID,CreationDate,UserCreatorID")] Order order)
         {
+            order.ID = _context.ObjectChanges.Max(p => p.ID) + 1;
+            order.UserCreatorID = _context.User.First().UserID;
+            order.State = Order.OrderState.ruošiamas;
+            order.CreationDate = DateTime.Now;
             if (ModelState.IsValid)
             {
                 _context.Add(order);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserCreatorID"] = new SelectList(_context.User, "UserID", "UserID", order.UserCreatorID);
             return View(order);
         }
 
@@ -90,7 +93,7 @@ namespace yard_management_system.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderID,State,ID,CreationDate,UserCreatorID")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("State,ID,CreationDate,UserCreatorID")] Order order)
         {
             if (id != order.ID)
             {

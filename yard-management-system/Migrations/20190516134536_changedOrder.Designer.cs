@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using yard_management_system.Models;
 
 namespace yard_management_system.Migrations
 {
     [DbContext(typeof(yard_management_systemContext))]
-    partial class yard_management_systemContextModelSnapshot : ModelSnapshot
+    [Migration("20190516134536_changedOrder")]
+    partial class changedOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
