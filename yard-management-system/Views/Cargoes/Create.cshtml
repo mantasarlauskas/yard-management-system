@@ -4,35 +4,34 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<h2>Krovinio pridėjimas</h2>
 
-<h4>Cargo</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" asp-route-id="@ViewData["ID"]">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="RegistrationNumber" class="control-label"></label>
+                <label asp-for="RegistrationNumber" class="control-label">Registracijos numeris</label>
                 <input asp-for="RegistrationNumber" class="form-control" />
                 <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Weight" class="control-label"></label>
+                <label asp-for="Weight" class="control-label">Svoris</label>
                 <input asp-for="Weight" class="form-control" />
                 <span asp-validation-for="Weight" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
+                <label asp-for="Description" class="control-label">Aprašymas</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RampID" class="control-label"></label>
+                <label asp-for="RampID" class="control-label">Rampos numeris</label>
                 <select asp-for="RampID" class ="form-control" asp-items="ViewBag.RampID"></select>
             </div>
             <div class="form-group">
-                <label asp-for="EntryID" class="control-label"></label>
+                <label asp-for="EntryID" class="control-label">Įvažiavimo numeris</label>
                 <select asp-for="EntryID" class ="form-control" asp-items="ViewBag.EntryID"></select>
             </div>
             <div class="form-group">
@@ -43,6 +42,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="Orders" asp-action="Index">Back to List</a>
 </div>
 
