@@ -14,10 +14,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="State" class="control-label">Būsena</label>
-                <select asp-for="State"  class="form-control" asp-items="Html.GetEnumSelectList<Order.OrderState>()"></select>
+                <select asp-for="State" class="form-control" asp-items="Html.GetEnumSelectList<Order.OrderState>()"></select>
                 <span asp-validation-for="State" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="ID" />
+            <input type="hidden" asp-for="CreationDate" />
+            <input type="hidden" asp-for="UserCreatorID" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
