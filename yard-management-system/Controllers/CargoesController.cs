@@ -32,6 +32,7 @@ namespace yard_management_system.Controllers
                 .Include(c => c.Order)
                 .Include(c => c.Ramp)
                 .FirstOrDefaultAsync(m => m.ID == id);
+
             if (cargo == null)
             {
                 return NotFound();
@@ -51,6 +52,7 @@ namespace yard_management_system.Controllers
             var order = await _context.Order
                 .Include(o => o.UserCreator)
                 .FirstOrDefaultAsync(m => m.ID == id);
+
             if (order == null)
             {
                 return NotFound();
@@ -71,6 +73,7 @@ namespace yard_management_system.Controllers
         {
             cargo.OrderID = id;
             cargo.State = Cargo.CargoState.ruošiamas;
+
             if (ModelState.IsValid)
             {
                 _context.Add(cargo);
@@ -93,13 +96,14 @@ namespace yard_management_system.Controllers
             }
 
             var cargo = await _context.Cargo.FindAsync(id);
+
             if (cargo == null)
             {
                 return NotFound();
             }
-            ViewData["EntryID"] = new SelectList(_context.Entry, "ID", "Discriminator", cargo.EntryID);
-            ViewData["OrderID"] = new SelectList(_context.Order, "ID", "Discriminator", cargo.OrderID);
-            ViewData["RampID"] = new SelectList(_context.Ramp, "ID", "Discriminator", cargo.RampID);
+
+            ViewData["EntryID"] = new SelectList(_context.Entry, "ID", "Code");
+            ViewData["RampID"] = new SelectList(_context.Ramp, "ID", "Code");
             return View(cargo);
         }
 

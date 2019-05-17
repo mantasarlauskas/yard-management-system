@@ -29,62 +29,65 @@
             @Html.DisplayFor(model => model.UserCreator.FirstName)
             @Html.DisplayFor(model => model.UserCreator.SecondName)
         </dd>
-        <dd class="col-sm-12 text-center">
-            <strong>Užsakymo kroviniai</strong>
-        </dd>
-        <dd class="col-sm-10">
-            <table class="table">
-                <tr>
-                    <th>
-                        Registracijos numberis
-                    </th>
-                    <th>
-                        Svoris
-                    </th>
-                    <th>
-                        Aprašymas
-                    </th>
-                    <th>
-                        Būsena
-                    </th>
-                    <th>
-                        Rampos numeris
-                    </th>
-                    <th>
-                        Įvažiavimo numeris
-                    </th>
-                    <th></th>
-                </tr>
-                @foreach (var item in Model.Cargos)
-                {
+        @if (Model.Cargos.Count > 0)
+        {
+            <dd class="col-sm-12 text-center">
+                <strong>Užsakymo kroviniai</strong>
+            </dd>
+            <dd class="col-sm-10">
+                <table class="table">
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.RegistrationNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Weight)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.State)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Ramp.Code)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Entry.Code)
-                        </td>
-                        <td>
-                            <a asp-controller="Cargoes" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                            <a asp-controller="Cargoes" asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                            <a asp-controller="Cargoes" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                        </td>
+                        <th>
+                            Registracijos numberis
+                        </th>
+                        <th>
+                            Svoris
+                        </th>
+                        <th>
+                            Aprašymas
+                        </th>
+                        <th>
+                            Būsena
+                        </th>
+                        <th>
+                            Rampos numeris
+                        </th>
+                        <th>
+                            Įvažiavimo numeris
+                        </th>
+                        <th></th>
                     </tr>
-                }
-            </table>
-        </dd>
+                    @foreach (var item in Model.Cargos)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RegistrationNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Weight)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.State)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ramp.Code)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Entry.Code)
+                            </td>
+                            <td>
+                                <a asp-controller="Cargoes" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                                <a asp-controller="Cargoes" asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                                <a asp-controller="Cargoes" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </dd>
+        }
     </dl>
 </div>
 <div>
