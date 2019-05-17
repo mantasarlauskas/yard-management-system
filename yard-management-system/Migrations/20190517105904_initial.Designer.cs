@@ -10,7 +10,7 @@ using yard_management_system.Models;
 namespace yard_management_system.Migrations
 {
     [DbContext(typeof(yard_management_systemContext))]
-    [Migration("20190514125541_initial")]
+    [Migration("20190517105904_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -294,8 +294,6 @@ namespace yard_management_system.Migrations
             modelBuilder.Entity("yard_management_system.Models.Order", b =>
                 {
                     b.HasBaseType("yard_management_system.Models.ObjectChange");
-
-                    b.Property<int>("OrderID");
 
                     b.Property<int>("State");
 

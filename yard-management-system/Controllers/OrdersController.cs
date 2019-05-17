@@ -21,8 +21,8 @@ namespace yard_management_system.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var yard_management_systemContext = _context.Order.Include(o => o.UserCreator);
-            return View(await yard_management_systemContext.ToListAsync());
+            var orders = await _context.Order.Include(o => o.Cargos).Include(o => o.UserCreator).ToListAsync();
+            return View(orders);
         }
 
         // GET: Orders/Details/5
@@ -34,8 +34,13 @@ namespace yard_management_system.Controllers
             }
 
             var order = await _context.Order
-                .Include(o => o.UserCreator)
+                .Include("UserCreator")
+                .Include("Cargos")
+                .Include("Cargos.Ramp")
+                .Include("Cargos.Entry")
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
+
             if (order == null)
             {
                 return NotFound();

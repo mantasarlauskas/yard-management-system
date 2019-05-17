@@ -151,7 +151,6 @@ namespace yard_management_system.Migrations
                     Blocked = table.Column<bool>(nullable: true),
                     BlockedFrom = table.Column<DateTime>(nullable: true),
                     BlockedTo = table.Column<DateTime>(nullable: true),
-                    OrderID = table.Column<int>(nullable: true),
                     State = table.Column<int>(nullable: true),
                     Ramp_Code = table.Column<string>(nullable: true),
                     CategoryOfRamp = table.Column<int>(nullable: true),
