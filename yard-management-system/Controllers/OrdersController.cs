@@ -89,7 +89,6 @@ namespace yard_management_system.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserCreatorID"] = new SelectList(_context.User, "UserID", "UserID", order.UserCreatorID);
             return View(order);
         }
 
