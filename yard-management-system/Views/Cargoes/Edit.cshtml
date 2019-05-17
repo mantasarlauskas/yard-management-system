@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Redagavimas</h2>
 
-<h4>Cargo</h4>
+<h4>Krovinys nr. @Html.DisplayFor(model => model.ID)</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,43 +15,43 @@
             <input type="hidden" asp-for="OrderID" />
             <input type="hidden" asp-for="ID" />
             <div class="form-group">
-                <label asp-for="RegistrationNumber" class="control-label"></label>
+                <label asp-for="RegistrationNumber" class="control-label">Registracijos numeris</label>
                 <input asp-for="RegistrationNumber" class="form-control" />
                 <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Weight" class="control-label"></label>
+                <label asp-for="Weight" class="control-label">Svoris</label>
                 <input asp-for="Weight" class="form-control" />
                 <span asp-validation-for="Weight" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
+                <label asp-for="Description" class="control-label">Aprašymas</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="State" class="control-label"></label>
+                <label asp-for="State" class="control-label">Būsena</label>
                 <select asp-for="State" asp-items="Html.GetEnumSelectList<Cargo.CargoState>()" class="form-control"></select>
                 <span asp-validation-for="State" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RampID" class="control-label"></label>
+                <label asp-for="RampID" class="control-label">Rampos kodas</label>
                 <select asp-for="RampID" class="form-control" asp-items="ViewBag.RampID"></select>
                 <span asp-validation-for="RampID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EntryID" class="control-label"></label>
+                <label asp-for="EntryID" class="control-label">Įvažiavimo kodas</label>
                 <select asp-for="EntryID" class="form-control" asp-items="ViewBag.EntryID"></select>
                 <span asp-validation-for="EntryID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Išsaugoti" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="Orders" asp-action="Details" asp-route-id="@Model.OrderID">Grįžti į sąrašą</a>
 </div>
 

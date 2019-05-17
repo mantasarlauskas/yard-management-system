@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Keisti būseną</h2>
 
-<h4>Order</h4>
+<h4>Užsakymas nr. @Html.DisplayFor(model => model.ID)</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -21,13 +21,13 @@
             <input type="hidden" asp-for="CreationDate" />
             <input type="hidden" asp-for="UserCreatorID" />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Išsaugoti" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Grįžti į sąrašą</a>
 </div>
 

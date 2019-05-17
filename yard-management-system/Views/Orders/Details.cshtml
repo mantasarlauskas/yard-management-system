@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>Užsakymo informacija</h2>
 
 <div>
-    <h4>Order</h4>
+    <h4>Užsakymas nr. @Html.DisplayFor(model => model.ID)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -79,9 +79,9 @@
                                 @Html.DisplayFor(modelItem => item.Entry.Code)
                             </td>
                             <td>
-                                <a asp-controller="Cargoes" asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                                <a asp-controller="Cargoes" asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                                <a asp-controller="Cargoes" asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                                <a asp-controller="Cargoes" asp-action="Edit" asp-route-id="@item.ID">Redaguoti</a> |
+                                <a asp-controller="Cargoes" asp-action="Details" asp-route-id="@item.ID">Peržiūrėti</a> |
+                                <a asp-controller="Cargoes" asp-action="Delete" asp-route-id="@item.ID">Trinti</a>
                             </td>
                         </tr>
                     }
@@ -91,6 +91,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Keisti būseną</a> |
+    <a asp-action="Index">Grįžti į sąrašą</a>
 </div>
