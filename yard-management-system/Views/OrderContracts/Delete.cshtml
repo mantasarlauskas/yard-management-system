@@ -1,0 +1,38 @@
+﻿@model yard_management_system.Models.OrderContract
+
+@{
+    ViewData["Title"] = "Ištrynimas";
+}
+
+<h2>Ištrynimas</h2>
+
+<h3>Ar tikrai norite pašalinti šį kontragentą?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Vardas
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contractor.User.FirstName)
+        </dd>
+        <dt>
+            Pavardė
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contractor.User.SecondName)
+        </dd>
+        <dt>
+            Pareigos
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contractor.TypeOfContractor)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Trinti" class="btn btn-default" /> |
+        <a asp-controller="Cargoes" asp-action="Details" asp-route-id="@Model.CargoID">Grįžti į krovinio informaciją</a>
+    </form>
+</div>

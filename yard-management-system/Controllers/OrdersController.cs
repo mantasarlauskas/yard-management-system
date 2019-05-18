@@ -38,6 +38,8 @@ namespace yard_management_system.Controllers
                 .Include("Cargos")
                 .Include("Cargos.Ramp")
                 .Include("Cargos.Entry")
+                .Include("Cargos.CargoTimeSlots")
+                .Include("Cargos.OrderContracts")
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
 

@@ -32,6 +32,9 @@ namespace yard_management_system.Controllers
                 .Include("Ramp")
                 .Include("CargoTimeSlots")
                 .Include("CargoTimeSlots.TimeSlot")
+                .Include("OrderContracts")
+                .Include("OrderContracts.Contractor")
+                .Include("OrderContracts.Contractor.User")
                 .FirstOrDefaultAsync(m => m.ID == id);
 
             if (cargo == null)

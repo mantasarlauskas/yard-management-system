@@ -35,5 +35,7 @@ namespace yard_management_system.Models
         public DbSet<Entry> Entry { get; set; }
 
         public DbSet<Contractor> Contractor { get; set; }
+
+        public DbSet<yard_management_system.Models.OrderContract> OrderContract { get; set; }
     }
 }

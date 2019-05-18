@@ -38,10 +38,7 @@
                 <table class="table">
                     <tr>
                         <th>
-                            Registracijos numberis
-                        </th>
-                        <th>
-                            Svoris
+                            Krovinio numeris
                         </th>
                         <th>
                             Aprašymas
@@ -49,22 +46,13 @@
                         <th>
                             Būsena
                         </th>
-                        <th>
-                            Rampos numeris
-                        </th>
-                        <th>
-                            Įvažiavimo numeris
-                        </th>
                         <th></th>
                     </tr>
                     @foreach (var item in Model.Cargos)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.RegistrationNumber)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Weight)
+                                @Html.DisplayFor(modelItem => item.ID)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Description)
@@ -73,13 +61,6 @@
                                 @Html.DisplayFor(modelItem => item.State)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Ramp.Code)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Entry.Code)
-                            </td>
-                            <td>
-                                <a asp-controller="CargoTimeSlots" asp-action="Create" asp-route-id="@item.ID">Pridėti laiką</a> |
                                 <a asp-controller="Cargoes" asp-action="Edit" asp-route-id="@item.ID">Redaguoti</a> |
                                 <a asp-controller="Cargoes" asp-action="Details" asp-route-id="@item.ID">Peržiūrėti</a> |
                                 <a asp-controller="Cargoes" asp-action="Delete" asp-route-id="@item.ID">Trinti</a>

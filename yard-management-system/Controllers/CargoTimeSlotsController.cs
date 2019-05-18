@@ -62,7 +62,6 @@ namespace yard_management_system.Controllers
         public async Task<IActionResult> Create([Bind("TimeSlotID")] CargoTimeSlot cargoTimeSlot, int id)
         {
             cargoTimeSlot.CargoID = id;
-
             if (ModelState.IsValid)
             {
                 var timeSlot = await _context.TimeSlot
