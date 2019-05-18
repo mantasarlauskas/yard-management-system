@@ -61,9 +61,14 @@
                                 @Html.DisplayFor(modelItem => item.State)
                             </td>
                             <td>
+                                |
                                 <a asp-controller="Cargoes" asp-action="Edit" asp-route-id="@item.ID">Redaguoti</a> |
                                 <a asp-controller="Cargoes" asp-action="Details" asp-route-id="@item.ID">Peržiūrėti</a> |
-                                <a asp-controller="Cargoes" asp-action="Delete" asp-route-id="@item.ID">Trinti</a>
+                                @if (item.CargoTimeSlots.Count == 0 && item.OrderContracts.Count == 0)
+                                {
+                                    <a asp-controller="Cargoes" asp-action="Delete" asp-route-id="@item.ID">Trinti</a>
+                                    <span> |</span>
+                                }
                             </td>
                         </tr>
                     }

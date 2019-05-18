@@ -49,10 +49,8 @@ namespace yard_management_system.Controllers
                 })
                 .ToList();
 
-
             ViewData["ID"] = id;
             ViewData["ContractorID"] = new SelectList(contractorsList, "ID", "Description");
-            
             ViewData["count"] = contractorsList.Count;
             return View();
         }
