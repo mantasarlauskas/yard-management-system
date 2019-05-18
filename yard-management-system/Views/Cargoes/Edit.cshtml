@@ -1,12 +1,12 @@
 ﻿@model yard_management_system.Models.Cargo
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Redagavimas";
 }
 
 <h2>Redagavimas</h2>
 
-<h4>Krovinys nr. @Html.DisplayFor(model => model.ID)</h4>
+<h4>Krovinys nr. @Model.ID</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -35,7 +35,7 @@
                 <span asp-validation-for="State" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RampID" class="control-label">Rampos kodas</label>
+                <label asp-for="RampID" class="control-label">Rampa</label>
                 <select asp-for="RampID" class="form-control" asp-items="ViewBag.RampID"></select>
                 <span asp-validation-for="RampID" class="text-danger"></span>
             </div>

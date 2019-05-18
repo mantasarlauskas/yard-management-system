@@ -1,7 +1,7 @@
 ﻿@model yard_management_system.Models.Order
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Užsakymo informacija";
 }
 
 <h2>Užsakymo informacija</h2>
@@ -79,6 +79,7 @@
                                 @Html.DisplayFor(modelItem => item.Entry.Code)
                             </td>
                             <td>
+                                <a asp-controller="CargoTimeSlots" asp-action="Create" asp-route-id="@item.ID">Pridėti laiką</a> |
                                 <a asp-controller="Cargoes" asp-action="Edit" asp-route-id="@item.ID">Redaguoti</a> |
                                 <a asp-controller="Cargoes" asp-action="Details" asp-route-id="@item.ID">Peržiūrėti</a> |
                                 <a asp-controller="Cargoes" asp-action="Delete" asp-route-id="@item.ID">Trinti</a>
@@ -91,6 +92,7 @@
     </dl>
 </div>
 <div>
+    <a asp-controller="Cargoes" asp-action="Create" asp-route-id="@Model.ID">Pridėti krovinį</a> |
     <a asp-action="Edit" asp-route-id="@Model.ID">Keisti būseną</a> |
     <a asp-action="Index">Grįžti į sąrašą</a>
 </div>

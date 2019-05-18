@@ -104,7 +104,7 @@ namespace yard_management_system.Data
                 timeSlots[i] = new TimeSlot
                 {
                     TimeSlotID = i,
-                    Date = RandomDay(rnd),
+                    Date = GetFutureDate(rnd, DateTime.Now),
                     TimeFrom = "13:00",
                     TimeDuration = "60",
                     TypeOfTimeSlot = TimeSlot.TimeSlotType.aktyvus,
@@ -196,9 +196,8 @@ namespace yard_management_system.Data
 
         public static DateTime RandomDay(Random gen)
         {
-            DateTime start = new DateTime(1995, 1, 1);
-            int range = (DateTime.Today - start).Days;
-            return start.AddDays(gen.Next(range));
+            DateTime start = new DateTime(2016, 1, 1);
+            return start.AddDays(gen.Next(3000));
         }
     }
 }

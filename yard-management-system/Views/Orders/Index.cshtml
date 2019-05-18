@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<yard_management_system.Models.Order>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Užsakymai";
 }
 
 <h2>Užsakymai</h2>
@@ -28,7 +28,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.State)
@@ -50,6 +50,6 @@
                 }
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>

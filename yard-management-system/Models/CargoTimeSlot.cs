@@ -15,9 +15,5 @@ namespace yard_management_system.Models
 		// Foreign key
 		public Cargo Cargo { get; set; }
 		public TimeSlot TimeSlot { get; set; }
-
-		// Primary key
-	//	public ICollection<TimeSlot> TimeSlots { get; set; }
-
 	}
 }

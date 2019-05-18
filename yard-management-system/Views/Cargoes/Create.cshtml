@@ -1,7 +1,7 @@
 ﻿@model yard_management_system.Models.Cargo
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Krovinio pridėjimas";
 }
 
 <h2>Krovinio pridėjimas</h2>
@@ -27,21 +27,21 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RampID" class="control-label">Rampos numeris</label>
+                <label asp-for="RampID" class="control-label">Rampa</label>
                 <select asp-for="RampID" class ="form-control" asp-items="ViewBag.RampID"></select>
             </div>
             <div class="form-group">
-                <label asp-for="EntryID" class="control-label">Įvažiavimo numeris</label>
+                <label asp-for="EntryID" class="control-label">Įvažiavimo kodas</label>
                 <select asp-for="EntryID" class ="form-control" asp-items="ViewBag.EntryID"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Pridėti" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-controller="Orders" asp-action="Index">Back to List</a>
+    <a asp-controller="Orders" asp-action="Index">Grįžti į sąrašą</a>
 </div>
 

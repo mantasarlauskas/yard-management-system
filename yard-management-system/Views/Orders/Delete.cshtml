@@ -1,14 +1,13 @@
 ﻿@model yard_management_system.Models.Order
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Ištrynimas";
 }
 
 <h2>Ištrynimas</h2>
 
 <h3>Ar tikrai nori ištrinti šį užsakymą?</h3>
 <div>
-    <h4>Order</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -27,7 +26,8 @@
             Sukūrė
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.UserCreator.UserID)
+            @Html.DisplayFor(model => model.UserCreator.FirstName)
+            @Html.DisplayFor(model => model.UserCreator.SecondName)
         </dd>
     </dl>
     

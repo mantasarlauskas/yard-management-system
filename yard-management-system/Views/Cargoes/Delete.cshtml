@@ -1,14 +1,13 @@
 ﻿@model yard_management_system.Models.Cargo
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Ištrynimas";
 }
 
 <h2>Ištrynimas</h2>
 
 <h3>Ar tikrai norite pašalinti šį krovinį?</h3>
 <div>
-    <h4>Cargo</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -58,6 +57,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="ID" />
         <input type="submit" value="Trinti" class="btn btn-default" /> |
-        <a asp-controller="Orders" asp-action="Details" asp-route-id="@Model.OrderID">Back to List</a>
+        <a asp-controller="Orders" asp-action="Details" asp-route-id="@Model.OrderID">Grįžti į sąrašą</a>
     </form>
 </div>

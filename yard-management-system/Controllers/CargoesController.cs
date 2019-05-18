@@ -18,7 +18,6 @@ namespace yard_management_system.Controllers
             _context = context;
         }
 
-
         // GET: Cargoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -28,9 +27,11 @@ namespace yard_management_system.Controllers
             }
 
             var cargo = await _context.Cargo
-                .Include(c => c.Entry)
-                .Include(c => c.Order)
-                .Include(c => c.Ramp)
+                .Include("Entry")
+                .Include("Order")
+                .Include("Ramp")
+                .Include("CargoTimeSlots")
+                .Include("CargoTimeSlots.TimeSlot")
                 .FirstOrDefaultAsync(m => m.ID == id);
 
             if (cargo == null)
@@ -59,8 +60,15 @@ namespace yard_management_system.Controllers
             }
 
             ViewData["ID"] = id;
+            var ramps = _context.Ramp
+                .Select(r => new
+                {
+                    ID = r.ID,
+                    Description = string.Format("Kodas: {0}, Transporto kategorija: {1}", r.Code, r.CategoryOfRamp)
+                });
+
             ViewData["EntryID"] = new SelectList(_context.Entry, "ID", "Code");
-            ViewData["RampID"] = new SelectList(_context.Ramp, "ID", "Code");
+            ViewData["RampID"] = new SelectList(ramps, "ID", "Description");
             return View();
         }
 
@@ -102,8 +110,15 @@ namespace yard_management_system.Controllers
                 return NotFound();
             }
 
+            var ramps = _context.Ramp
+                .Select(r => new
+                {
+                    ID = r.ID,
+                    Description = string.Format("Kodas: {0}, Transporto kategorija: {1}", r.Code, r.CategoryOfRamp)
+                });
+
             ViewData["EntryID"] = new SelectList(_context.Entry, "ID", "Code");
-            ViewData["RampID"] = new SelectList(_context.Ramp, "ID", "Code");
+            ViewData["RampID"] = new SelectList(ramps, "ID", "Description");
             return View(cargo);
         }
 
@@ -139,9 +154,9 @@ namespace yard_management_system.Controllers
                 }
                 return RedirectToAction("Details", "Orders", new { id = cargo.OrderID });
             }
-            ViewData["EntryID"] = new SelectList(_context.Entry, "ID", "Discriminator", cargo.EntryID);
-            ViewData["OrderID"] = new SelectList(_context.Order, "ID", "Discriminator", cargo.OrderID);
-            ViewData["RampID"] = new SelectList(_context.Ramp, "ID", "Discriminator", cargo.RampID);
+
+            ViewData["EntryID"] = new SelectList(_context.Entry, "ID", "Code");
+            ViewData["RampID"] = new SelectList(_context.Ramp, "ID", "Code");
             return View(cargo);
         }
 
@@ -158,6 +173,7 @@ namespace yard_management_system.Controllers
                 .Include(c => c.Order)
                 .Include(c => c.Ramp)
                 .FirstOrDefaultAsync(m => m.ID == id);
+
             if (cargo == null)
             {
                 return NotFound();
