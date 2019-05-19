@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace yard_management_system.Models
 {
@@ -17,9 +16,12 @@ namespace yard_management_system.Models
 		}
 
 		public int ID { get; set; }
-		public string RegistrationNumber { get; set; }
-		public string Weight { get; set; }
-		public string Description { get; set; }
+        [Required]
+        public string RegistrationNumber { get; set; }
+        [Required]
+        public double Weight { get; set; }
+        [Required]
+        public string Description { get; set; }
 		public CargoState State { get; set; }
 
 		public int RampID { get; set; }

@@ -73,10 +73,8 @@ namespace yard_management_system.Data
                     ID = i,
                     Code = rnd.Next(00000, 99999).ToString(),
                     CategoryOfRamp = Ramp.Category.C,
-                    Blocked = i % 5 == 0 ? false : true,
-                    BlockedFrom = date,
-                    BlockedTo = GetFutureDate(rnd, date),
-                    CreationDate = new DateTime(),
+                    Blocked = false,
+                    CreationDate = DateTime.Now,
                     UserCreatorID = i
                 };
             }
@@ -108,8 +106,8 @@ namespace yard_management_system.Data
                     TimeFrom = "13:00",
                     TimeDuration = "60",
                     TypeOfTimeSlot = TimeSlot.TimeSlotType.aktyvus,
-                    Reserved = i % 2 == 0 ? false : true,
-                    Blocked = i % 5 == 0 ? false : true,
+                    Reserved = false,
+                    Blocked = false,
                     RampID = i
                 };
             }
@@ -141,10 +139,8 @@ namespace yard_management_system.Data
                 {
                     ID = lastIndex + i + 1,
                     Code = rnd.Next(00000, 99999).ToString(),
-                    Blocked = i % 5 == 0 ? false : true,
-                    BlockedFrom = date,
-                    BlockedTo = GetFutureDate(rnd, date),
-                    CreationDate = new DateTime(),
+                    Blocked = false,
+                    CreationDate = DateTime.Now,
                     UserCreatorID = i
                 };
             }

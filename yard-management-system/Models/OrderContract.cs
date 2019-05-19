@@ -17,7 +17,5 @@ namespace yard_management_system.Models
 		public Contractor Contractor { get; set; }
 
 		// Primary key
-		//public ICollection<Cargo> Cargos { get; set; }
-		//public ICollection<Contractor> Contractors { get; set; }
 	}
 }

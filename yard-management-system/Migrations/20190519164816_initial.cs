@@ -76,9 +76,9 @@ namespace yard_management_system.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    RegistrationNumber = table.Column<string>(nullable: true),
-                    Weight = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
+                    RegistrationNumber = table.Column<string>(nullable: false),
+                    Weight = table.Column<double>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
                     State = table.Column<int>(nullable: false),
                     RampID = table.Column<int>(nullable: false),
                     EntryID = table.Column<int>(nullable: false),

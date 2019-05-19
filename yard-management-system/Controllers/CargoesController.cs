@@ -62,14 +62,13 @@ namespace yard_management_system.Controllers
                 return NotFound();
             }
 
-            ViewData["ID"] = id;
             var ramps = _context.Ramp
                 .Select(r => new
                 {
                     ID = r.ID,
                     Description = string.Format("Kodas: {0}, Transporto kategorija: {1}", r.Code, r.CategoryOfRamp)
                 });
-
+            ViewData["ID"] = id;
             ViewData["EntryID"] = new SelectList(_context.Entry, "ID", "Code");
             ViewData["RampID"] = new SelectList(ramps, "ID", "Description");
             return View();
@@ -92,9 +91,15 @@ namespace yard_management_system.Controllers
                 return RedirectToAction("Details", "Orders", new { id = cargo.OrderID });
             }
 
+            var ramps = _context.Ramp
+                .Select(r => new
+                {
+                    ID = r.ID,
+                    Description = string.Format("Kodas: {0}, Transporto kategorija: {1}", r.Code, r.CategoryOfRamp)
+                });
             ViewData["ID"] = id;
             ViewData["EntryID"] = new SelectList(_context.Entry, "ID", "Code");
-            ViewData["RampID"] = new SelectList(_context.Ramp, "ID", "Code");
+            ViewData["RampID"] = new SelectList(ramps, "ID", "Description");
             return View(cargo);
         }
 
@@ -119,7 +124,6 @@ namespace yard_management_system.Controllers
                     ID = r.ID,
                     Description = string.Format("Kodas: {0}, Transporto kategorija: {1}", r.Code, r.CategoryOfRamp)
                 });
-
             ViewData["EntryID"] = new SelectList(_context.Entry, "ID", "Code");
             ViewData["RampID"] = new SelectList(ramps, "ID", "Description");
             return View(cargo);
@@ -158,8 +162,14 @@ namespace yard_management_system.Controllers
                 return RedirectToAction("Details", "Orders", new { id = cargo.OrderID });
             }
 
+            var ramps = _context.Ramp
+                .Select(r => new
+                {
+                    ID = r.ID,
+                    Description = string.Format("Kodas: {0}, Transporto kategorija: {1}", r.Code, r.CategoryOfRamp)
+                });
             ViewData["EntryID"] = new SelectList(_context.Entry, "ID", "Code");
-            ViewData["RampID"] = new SelectList(_context.Ramp, "ID", "Code");
+            ViewData["RampID"] = new SelectList(ramps, "ID", "Description");
             return View(cargo);
         }
 

@@ -10,7 +10,7 @@ using yard_management_system.Models;
 namespace yard_management_system.Migrations
 {
     [DbContext(typeof(yard_management_systemContext))]
-    [Migration("20190517105904_initial")]
+    [Migration("20190519164816_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,7 +27,8 @@ namespace yard_management_system.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired();
 
                     b.Property<int>("EntryID");
 
@@ -35,11 +36,12 @@ namespace yard_management_system.Migrations
 
                     b.Property<int>("RampID");
 
-                    b.Property<string>("RegistrationNumber");
+                    b.Property<string>("RegistrationNumber")
+                        .IsRequired();
 
                     b.Property<int>("State");
 
-                    b.Property<string>("Weight");
+                    b.Property<double>("Weight");
 
                     b.HasKey("ID");
 
@@ -280,9 +282,9 @@ namespace yard_management_system.Migrations
 
                     b.Property<bool>("Blocked");
 
-                    b.Property<DateTime>("BlockedFrom");
+                    b.Property<DateTime?>("BlockedFrom");
 
-                    b.Property<DateTime>("BlockedTo");
+                    b.Property<DateTime?>("BlockedTo");
 
                     b.Property<string>("Code");
 
@@ -309,10 +311,10 @@ namespace yard_management_system.Migrations
                     b.Property<bool>("Blocked")
                         .HasColumnName("Ramp_Blocked");
 
-                    b.Property<DateTime>("BlockedFrom")
+                    b.Property<DateTime?>("BlockedFrom")
                         .HasColumnName("Ramp_BlockedFrom");
 
-                    b.Property<DateTime>("BlockedTo")
+                    b.Property<DateTime?>("BlockedTo")
                         .HasColumnName("Ramp_BlockedTo");
 
                     b.Property<int>("CategoryOfRamp");

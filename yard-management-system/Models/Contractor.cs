@@ -23,14 +23,9 @@ namespace yard_management_system.Models
 
 		// Foreign key
 		public User User { get; set; }
-		//public MessageReceiver MessageReceiver { get; set; }
 
 		// Primary key
 		public ICollection<OrderContract> OrderContracts { get; set; }
 		public ICollection<MessageReceiver> MessageReceivers { get; set; }
-		//public ICollection<User> User { get; set; }
-		//public ICollection<Message> Messages { get; set; }
-		//public ICollection<Cargo> Cargos { get; set; }
-
 	}
 }
