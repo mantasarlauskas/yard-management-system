@@ -22,6 +22,7 @@ namespace yard_management_system.Controllers
         public async Task<IActionResult> Index()
         {
             var orders = await _context.Order.Include(o => o.Cargos).Include(o => o.UserCreator).ToListAsync();
+            ViewData["count"] = orders.Count;
             return View(orders);
         }
 
