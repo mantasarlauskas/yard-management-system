@@ -14,7 +14,6 @@ namespace yard_management_system.Data
         public static void Initialize(yard_management_systemContext context)
         {
             context.Database.EnsureCreated();
-
             InitializeUsers(context);
             InitializeRamps(context);
             InitializeTimeSlots(context);

@@ -44,6 +44,7 @@
                 <select asp-for="EntryID" class="form-control" asp-items="ViewBag.EntryID"></select>
                 <span asp-validation-for="EntryID" class="text-danger"></span>
             </div>
+            <input type="hidden" name="prevState" value="@ViewData["State"]" />
             <div class="form-group">
                 <input type="submit" value="Išsaugoti" class="btn btn-default" />
             </div>

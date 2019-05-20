@@ -12,10 +12,12 @@ namespace yard_management_system.Controllers
     public class CargoesController : Controller
     {
         private readonly yard_management_systemContext _context;
+        private readonly MessagesController _messagesCtrl;
 
-        public CargoesController(yard_management_systemContext context)
+        public CargoesController(yard_management_systemContext context, MessagesController messagesCtrl)
         {
             _context = context;
+            _messagesCtrl = messagesCtrl;
         }
 
         // GET: Cargoes/Details/5
@@ -124,6 +126,7 @@ namespace yard_management_system.Controllers
                     ID = r.ID,
                     Description = string.Format("Kodas: {0}, Transporto kategorija: {1}", r.Code, r.CategoryOfRamp)
                 });
+            ViewData["State"] = cargo.State;
             ViewData["EntryID"] = new SelectList(_context.Entry, "ID", "Code");
             ViewData["RampID"] = new SelectList(ramps, "ID", "Description");
             return View(cargo);
@@ -134,19 +137,25 @@ namespace yard_management_system.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,RegistrationNumber,Weight,Description,State,RampID,EntryID,OrderID")] Cargo cargo)
+        public async Task<IActionResult> Edit(int id, string prevState,
+            [Bind("ID,RegistrationNumber,Weight,Description,State,RampID,EntryID,OrderID")] Cargo cargo)
         {
             if (id != cargo.ID)
             {
                 return NotFound();
             }
-
+            
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(cargo);
                     await _context.SaveChangesAsync();
+                    string currentState = cargo.State.ToString();
+                    if (prevState != currentState)
+                    {
+                        await _messagesCtrl.CreateMessage(id, prevState, currentState);
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {

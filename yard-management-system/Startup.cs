@@ -34,8 +34,8 @@ namespace yard_management_system
 			});
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-		    services.AddDbContext<yard_management_systemContext>(options =>
+            services.AddMvc().AddControllersAsServices();
+            services.AddDbContext<yard_management_systemContext>(options =>
 		            options.UseSqlServer(Configuration.GetConnectionString("yard_management_systemContext")));
 		}
 
